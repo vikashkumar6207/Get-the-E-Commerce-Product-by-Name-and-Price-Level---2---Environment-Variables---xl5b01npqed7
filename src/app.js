@@ -19,8 +19,8 @@ app.get("/api/v1//products/:id", (req, res)=>{
   const product = products.find(item=> item.id === id);
 
   if(!product){
-    res.statusCode = 400;
-    const payload = {status: "failed", message: "Product not found!"};
+    res.statusCode = 404;
+    const payload = {"status": "failed", "message": "Product not found!"};
     res.json(payload);
   }else {
     res.statusCode = 200;
@@ -29,14 +29,10 @@ app.get("/api/v1//products/:id", (req, res)=>{
       message: "Product fetched successfully",
       data: {
         product,
-      } 
-    }
+      }, 
+    };
     res.json(payload);
   }
-
-
-   
-  
 })
 
 module.exports = app;
