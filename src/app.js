@@ -16,11 +16,11 @@ app.get("/api/v1//products/:id", (req, res)=>{
 
   const id = Number(req.params["id"]);
 
-  const product = products.find((item)=> item.id === id);
+  const product = products.find(item=> item.id === id);
 
   if(!product){
     res.statusCode = 400;
-    const payload = {message: "Product not found"};
+    const payload = {status: "failed", message: "Product not found!"};
     res.json(payload);
   }else {
     res.statusCode = 200;
@@ -34,7 +34,7 @@ app.get("/api/v1//products/:id", (req, res)=>{
     res.json(payload);
   }
 
-  
+
    
   
 })
